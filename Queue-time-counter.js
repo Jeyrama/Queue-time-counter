@@ -24,3 +24,6 @@ and you will be always given a valid index;
 but we also want to go to pretty popular events, 
 so be ready for big queues with people getting plenty of tickets.
 */
+
+
+// Solution
