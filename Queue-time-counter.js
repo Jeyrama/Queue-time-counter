@@ -41,3 +41,5 @@ function queue(queuers, pos){
   
   return wait;
 }
+
+// or
