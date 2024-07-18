@@ -43,3 +43,51 @@ function queue(queuers, pos){
 }
 
 // or
+
+function queue(queuers, pos){
+  // Store the number of tickets we need
+  let tickets = queuers[pos];
+  
+  // Store a copy of the passed in queue
+  let currentQueue = [...queuers];
+  
+  // Counter for the number of minutes elapsed
+  let minutes = 0;
+
+  // Lets loop as long as tickets required is > 0
+  while (tickets) {
+    // Is our friend at the front of the queue
+    if (pos == 0) {
+      // Lets give our friend a ticket and take them out of the queue
+      tickets--;
+      currentQueue.shift();
+      
+      // If our friend still needs tickets, put them at the back of the queue
+      if (tickets) {
+        currentQueue.push(tickets)
+        // Lets update our friends position to the back of the queue
+        pos = currentQueue.length - 1;
+      }
+    } 
+    // Our friend is somewhere else in the queue
+    else {
+      // Get the person at the front of the queue
+      let front = currentQueue.shift();
+      // Decrement their ticket counter
+      front--;
+      
+      // Do they need more tickets?
+      if (front > 0){
+        // Send them to the back of the queue
+        currentQueue.push(front);
+      } // We can omit an else statement here, if the persons tickets required is 0, they can go home (don't add them back into the queue)
+      
+      // Our friend has moved up the queue so decrement their position
+      pos--;
+    }
+    // Lets increment minutes as someone has gotten their ticket
+    minutes++;
+  }
+  // We've now calculated minutes, so return it
+  return minutes;
+}
